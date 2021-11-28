@@ -1,4 +1,3 @@
-import {Config} from '../Config';
 import axios from 'axios';
 import AuthenticationService from './AuthenticationService';
 
@@ -7,7 +6,7 @@ const apiGet = (token, str) => {
       Accept: 'application/json',
       Authorization: 'Bearer ' + token,
     };
-  return axios.get(Config.apiUrl + str, {headers});
+  return axios.get(process.env.REACT_APP_API_URL + str, {headers});
 };
 
 const apiPost = (token, str, data) => {
@@ -17,7 +16,7 @@ const apiPost = (token, str, data) => {
     'Content-Type': 'application/json',
     Authorization: 'Bearer ' + token,
   };
-  return axios.post(Config.apiUrl + str, data,{headers});
+  return axios.post(process.env.REACT_APP_API_URL + str, data,{headers});
 }
 
 const apiDelete = (token, str) => {
@@ -25,7 +24,7 @@ const apiDelete = (token, str) => {
     Accept: 'application/json',
     Authorization: 'Bearer ' + token,
   };
-  return axios.delete(Config.apiUrl + str, {headers});
+  return axios.delete(process.env.REACT_APP_API_URL + str, {headers});
 }
 
 class ApiService {

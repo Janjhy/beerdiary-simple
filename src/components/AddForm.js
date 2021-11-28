@@ -27,6 +27,8 @@ const AddForm = (props) => {
                 onChange={event => setBeerName(event.target.value)}
             />
           </label>
+        </form>
+          <form>
           <label>
             Select a score:
             <br/>
