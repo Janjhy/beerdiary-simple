@@ -28,9 +28,12 @@ const ListItem = (props) => {
         </dialog>
         }
         <div className="Review-Title">
-          <h3>{beer}</h3>
-          <h5>My Score: {review.reviewScore}</h5>
-          <button className="Delete-Btn" onClick={openConfirmationDialog}>Delete</button>
+          <h3 className="Title-Content">{beer}</h3>
+          <h5 className="Score-Text Title-Content">My Score: {review.reviewScore}</h5>
+          <div className="Title-Content">
+            <button className="Delete-Btn" onClick={openConfirmationDialog}>Delete</button>
+          </div>
+
         </div>
 
         <p>{review.reviewComment}</p>

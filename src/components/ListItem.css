@@ -1,5 +1,5 @@
 .Review-Item {
-    border-bottom: solid black;
+    border-top: solid black;
     padding-bottom: 5px;
     color: white;
     margin-left: 15px;
@@ -8,7 +8,7 @@
 
 .Review-Title {
     display: flex;
-    text-align: justify;
+    text-align: center;
     justify-content: space-around;
     align-items: center;
 }
@@ -19,4 +19,12 @@
     border: solid black 1px;
     border-radius: 5px;
     height: 30px;
+}
+
+.Score-Text {
+    text-align: center;
+}
+
+.Title-Content {
+    flex: 1 0 0;
 }

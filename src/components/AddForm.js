@@ -8,10 +8,10 @@ const AddForm = (props) => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    if(props.validateForm(beerName, comment, score)) {
+    if (props.validateForm(beerName, comment, score)) {
       setBeerName('');
       setComment('');
-      setScore(0)
+      setScore(0);
     }
   };
 
@@ -28,11 +28,12 @@ const AddForm = (props) => {
             />
           </label>
         </form>
-          <form>
+        <form className="Add-Form">
           <label>
             Select a score:
             <br/>
-            <select name="score" value={score} onChange={event => setScore(event.target.value)}>
+            <select name="score" value={score}
+                    onChange={event => setScore(event.target.value)}>
               <option>0</option>
               <option>1</option>
               <option>2</option>

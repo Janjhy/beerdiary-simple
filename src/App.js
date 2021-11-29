@@ -7,6 +7,7 @@ import ListAndSelector from './components/ListAndSelector';
 import {toast, ToastContainer} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import AddForm from './components/AddForm';
+require('dotenv').config();
 
 const App = () => {
   const apiService = new ApiService();
@@ -36,24 +37,23 @@ const App = () => {
   }, []);
 
   const login = () => {
-    authenticationService.login();
-    /*.then(getUser)
-    .catch(err => (console.log(err)));*/
-    //authenticationService.getThisUser().then(user => console.log(user));
+    authenticationService.login()
+    .then(getUser)
+    .catch(err => (console.log(err)));
   };
 
   const logout = () => {
-    authenticationService.logout();/*.then(_ => {
+    authenticationService.logout().then(_ => {
       authenticationService.getThisUser().then(user => setUser(user));
       if (user) {
         toast.error('Logout error');
       } else {
         toast.success('Logout success');
-        reviews = [];
-        beers = [];
-        userBeers = [];
+        setReviews([]);
+        setBeers([]);
+        setUserBeers([]);
       }
-    });*/
+    });
   };
 
   const deleteReview = (id) => {
@@ -61,7 +61,6 @@ const App = () => {
       apiService.getReviewById(id).then(res => {
         if (res.status === 204) {
           toast.success('Deleted review!');
-          console.log(update);
           setUpdate(true);
         } else {
           toast.error('Problem with deletion.');
@@ -89,7 +88,6 @@ const App = () => {
         apiService.postReview(review).then(res => {
           if (res.status === 201) {
             toast.success('Added review!');
-            console.log(update);
             toggleForm();
             setUpdate(true);
           }
@@ -128,7 +126,6 @@ const App = () => {
           .then(res => {if (isMounted) setReviews(res.data);});
       await apiService.getUserBeers()
           .then(res => {if (isMounted) setUserBeers(res.data); });
-      console.log(isMounted);
       setUpdate(false);
     }
     return () => { isMounted = false; };
